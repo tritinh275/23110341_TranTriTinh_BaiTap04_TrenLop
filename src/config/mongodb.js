@@ -22,17 +22,19 @@ async function seedDatabaseIfEmpty() {
   );
 
   await User.updateOne(
-    { username: "member01" },
+    { username: "user" },
     {
       $set: {
-        username: "member01",
+        username: "user",
         password: "123456",
-        fullName: "Nguyễn Văn Member",
+        fullName: "Tran Tri Tinh",
         role: "member"
       }
     },
     { upsert: true }
   );
+
+  await User.deleteOne({ username: "member01" });
 }
 
 async function connectMongo() {
